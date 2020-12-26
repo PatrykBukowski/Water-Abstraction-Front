@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 const Login = props => {
     const [redirect, setRedirect] = useState(false);
-    const { from } = props.location.state || { from: { pathname: '/' } }
+    const { from } = props.location || { from: { pathname: '/' } }
 
     const login = () => {
         props.auth.authenticate(() => {
@@ -14,6 +14,7 @@ const Login = props => {
     if (redirect === true) {
         return <Redirect to={from} />
     }
+
 
     return (
         <div>

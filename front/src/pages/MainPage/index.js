@@ -1,6 +1,7 @@
 import Login from '../../components/Login';
 import Public from '../../components/Public';
 import Protected from '../../components/Protected';
+
 import {
     BrowserRouter as Router,
     Link,
@@ -32,17 +33,16 @@ const AuthButton = withRouter(({ history }) => (
         : <p>You are not logged in.</p>
 ))
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    console.log(fakeAuth.isAuthenticated)
-    return <Route {...rest} render={props => {
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
         fakeAuth.isAuthenticated === true
             ? <Component {...props} />
             : <Redirect to={{
                 pathname: '/login',
                 state: { from: props.location }
             }} />
-    }} />
-}
+    )} />
+)
 
 const MainPage = () => {
     return (
@@ -56,7 +56,7 @@ const MainPage = () => {
                 </ul>
 
                 <Route path="/public" component={Public} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" component={() => <Login auth={fakeAuth} />} />
                 <PrivateRoute path="/protected" component={Protected} />
             </div>
         </Router>
