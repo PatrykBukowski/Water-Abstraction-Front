@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Public = () => {
+const LoggedPage = () => {
     return (
         <div>
-            <h1>Public</h1>
+            Logged
         </div>
     )
 }
 
-export default Public
+export default LoggedPage

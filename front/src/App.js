@@ -3,7 +3,7 @@ import JwtTest from './pages/JwtTest';
 
 function App() {
   return (
-    <JwtTest />
+    <MainPage />
   );
 }
 
