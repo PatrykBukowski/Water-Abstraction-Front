@@ -8,7 +8,7 @@ const AddSubtraction = ({ user: { login }, reload }) => {
     const handleNameInput = ({ target: { value } }) => setSubstractionName(value)
     const handleValueInput = ({ target: { value } }) => setSubstractionValue(value)
 
-    const hs2b = () => {
+    const handleSendButton = () => {
         userService.postSubstraction(login, substractionName, substractionValue)
             .then(e => {
                 reload()
@@ -35,8 +35,8 @@ const AddSubtraction = ({ user: { login }, reload }) => {
             </div>
             <div>
                 <button
-                    onClick={hs2b}>
-                    Send2
+                    onClick={handleSendButton}>
+                    Send
                 </button>
             </div>
         </div>

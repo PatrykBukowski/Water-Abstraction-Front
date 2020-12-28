@@ -1,8 +1,7 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs'
+import { handleResponse } from '../../helpers/HandleResponse'
 
-import { handleResponse } from '../../helpers/HandleResponse';
-
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')))
 
 export const authenticationService = {
     login,

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const SubtractionList = props => {
+const SubtractionList = ({ list: subtractionList }) => {
     return (
         <div>
             <ul>
-            {
-                props.list.map(element => <li key={element.id}>{element.taskName} :: {element.value}</li>)
-            }
+                {subtractionList.map(element => <li key={element.id}>
+                    {element.taskName} :: {element.value}
+                </li>)}
             </ul>
         </div>
     )
