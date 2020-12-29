@@ -24,7 +24,7 @@ const RegisterComponent = ({ register }) => {
                     const errors = {};
                     if (!values.username) {
                         errors.username = 'Username is required'
-                    } else if (values.useState.length < 4) {
+                    } else if (values.username.length < 4) {
                         errors.username = 'Username is too short, minimum 4 chars is required'
                     }
                     if (!values.email) {
@@ -39,7 +39,7 @@ const RegisterComponent = ({ register }) => {
                     }
                     if (!values.nationality) {
                         errors.nationality = 'Nationality is required'
-                    } else if (values.password.length > 2) {
+                    } else if (values.nationality.length > 2) {
                         errors.nationality = 'Nationality abbreviation contains 2 chars'
                     }
                     return errors
