@@ -26,10 +26,10 @@ function getUser(username) {
     return fetch(`http://localhost:3000/users/${username}`, requestOptions).then(handleResponse);
 }
 
-function getEurostat(nationality){
+function getEurostat(nationality) {
     const requestOptions = {
         method: 'GET'
     }
-    
+
     return fetch(`http://localhost:3000/eurostat/current?nationality=${nationality}`, requestOptions).then(handleResponse);
 }

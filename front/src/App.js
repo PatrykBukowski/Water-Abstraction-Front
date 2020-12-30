@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link, Route, Router } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { history } from './helpers/History';
 import { authenticationService } from './services/AuthenticationService';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import styled from 'styled-components';
+import NavigationComponent from './components/NavigationComponent'
 
-class App extends React.Component{
-  constructor(props){
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+class App extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -16,11 +27,7 @@ class App extends React.Component{
   }
 
   componentDidMount() {
-    authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x}))
-  }
-
-  componentWillUnmount(){
-    authenticationService.currentUser.abort();
+    authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }))
   }
 
   logout() {
@@ -32,28 +39,18 @@ class App extends React.Component{
     const { currentUser } = this.state;
     return (
       <Router history={history}>
-      <div>
-        {currentUser &&
-          <nav>
-            <div>
-              <a onClick={this.logout}>Logout</a>
-            </div>
-          </nav>
-        }
-        <div>
+        <Container>
+          {currentUser &&
+            <NavigationComponent user={currentUser} logout={this.logout} />
+          }
           <div>
-            <div>
-              <div>
-                <PrivateRoute exact path='/' component={HomePage} />
-                <Route path="/login" component={LoginPage} />
-              </div>
-            </div>
+            <PrivateRoute exact path='/' component={HomePage} />
+            <Route path="/login" component={LoginPage} />
           </div>
-        </div>
-      </div>
-    </Router>
+        </Container>
+      </Router>
     )
   }
 }
 
-export default App ;
+export default App;

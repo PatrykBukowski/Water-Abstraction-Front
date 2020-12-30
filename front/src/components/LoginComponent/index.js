@@ -1,21 +1,29 @@
 import React from 'react'
-import { authenticationService } from '../../services/AuthenticationService';
 import { Formik } from 'formik';
+import {
+    Container,
+    FormContainer,
+    ErrorMessage,
+    ErrorParagraph,
+    Label,
+    Input,
+    Button,
+    ButtonContainer,
+} from './style'
 
 const LoginComponent = props => {
     return (
-        <div>
+        <Container>
             <Formik
                 initialValues={{ username: '', password: '' }}
                 onSubmit={(values) => {
-                    authenticationService.login(values.username, values.password)
+                    props.login(values.username, values.password)
                         .then(
                             user => {
                                 const { from } = props
                                     || { from: { pathname: '/' } }
                                 props.history.push(from)
-                            }, error => { }
-                        )
+                            })
                 }}
                 validate={values => {
                     const errors = {};
@@ -34,22 +42,24 @@ const LoginComponent = props => {
                     handleChange,
                     handleSubmit,
                 }) => (
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" onChange={handleChange}
+                    <FormContainer onSubmit={handleSubmit}>
+                        <Label htmlFor="username">Username</Label>
+                        <Input type="text" onChange={handleChange}
                             value={values.username} placeholder="Username"
                             name="username" id="username" />
-                        {errors.username && <p>{errors.username}</p>}
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password"
+                        <ErrorMessage>{errors.username && <ErrorParagraph>{errors.username}</ErrorParagraph>}</ErrorMessage>
+                        <Label htmlFor="password">Password</Label>
+                        <Input type="password" name="password"
                             onChange={handleChange} value={values.password} />
-                        {errors.password && <p>{errors.password}</p>}
-                        <button type="submit">Zaloguj</button>
-                        <button type="button" onClick={() => props.register()}>Rejestracja</button>
-                    </form>
+                        <ErrorMessage> {errors.password && <ErrorParagraph>{errors.password}</ErrorParagraph>}</ErrorMessage>
+                        <ButtonContainer>
+                            <Button type="submit">Zaloguj</Button>
+                            <Button type="button" onClick={() => props.register()}>Rejestracja</Button>
+                        </ButtonContainer>
+                    </FormContainer>
                 )}
             </Formik>
-        </div>
+        </Container>
     )
 }
 

@@ -5,13 +5,18 @@ import { authenticationService } from '../../services/AuthenticationService';
 
 const LoginPage = ({ history, location: { state } }) => {
     const [register, setRegister] = useState(false)
-    if (authenticationService.currentUserValue) history.push('/')
     const changeRegister = () => setRegister(!register)
+
+    if (authenticationService.currentUserValue) history.push('/')
 
     return (
         <div>
             {!register
-                ? <LoginComponent register={changeRegister} from={state} history={history} />
+                ? <LoginComponent 
+                login={authenticationService.login} 
+                register={changeRegister} 
+                from={state} 
+                history={history} />
                 : <RegisterComponent register={changeRegister} />
             }
         </div>

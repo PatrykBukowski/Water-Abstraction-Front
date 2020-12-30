@@ -24,7 +24,6 @@ class HomePage extends React.Component {
 
         return (
             <div>
-                { user && console.log(user) }
                 {user &&
                 <div>
                     <SubtractionSummary user={user} />
