@@ -1,10 +1,11 @@
 import React from 'react'
-import { authenticationService } from '../../services/AuthenticationService'
+import { authenticationService } from '../../../services/AuthenticationService'
 import { Formik } from 'formik';
+import * as S from '../Styles/style';
 
-const RegisterComponent = ({ register }) => {
+const RegisterComponent = props => {
     return (
-        <div>
+        <S.Container>
             <Formik
                 initialValues={{
                     username: '',
@@ -14,9 +15,9 @@ const RegisterComponent = ({ register }) => {
                 }}
                 onSubmit={(values) => {
                     const { username, password, email, nationality } = values
-                    authenticationService.register(username, password, email, nationality)
+                    props.createUser(username, password, email, nationality)
                         .then(
-                            response => { register() },
+                            response => { props.register() },
                             error => console.log(error)
                         )
                 }}
@@ -50,36 +51,38 @@ const RegisterComponent = ({ register }) => {
                     handleChange,
                     handleSubmit,
                 }) => (
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username</label>
-                        <input type='text' onChange={handleChange}
+                    <S.FormContainer minHeight="650px" onSubmit={handleSubmit}>
+                        <S.Label htmlFor="username">Username</S.Label>
+                        <S.Input type='text' onChange={handleChange}
                             value={values.username} placeholder="Username"
                             name="username" id="username" />
-                        {errors.username && <span>{errors.username}</span>}
+                        <S.ErrorMessage>{errors.username && <S.ErrorParagraph>{errors.username}</S.ErrorParagraph>}</S.ErrorMessage>
 
-                        <label htmlFor="password">Password</label>
-                        <input type="password" onChange={handleChange}
+                        <S.Label htmlFor="password">Password</S.Label>
+                        <S.Input type="password" onChange={handleChange}
                             value={values.password} placeholder="Password"
                             name="password" id="password" />
-                        {errors.password && <span>{errors.password}</span>}
+                        <S.ErrorMessage>{errors.password && <S.ErrorParagraph>{errors.password}</S.ErrorParagraph>}</S.ErrorMessage>
 
-                        <label htmlFor="email">Email</label>
-                        <input type="email" onChange={handleChange}
+                        <S.Label htmlFor="email">Email</S.Label>
+                        <S.Input type="email" onChange={handleChange}
                             value={values.email} placeholder="Email"
                             name="email" id="email" />
-                        {errors.email && <span>{errors.email}</span>}
+                        <S.ErrorMessage>{errors.email && <S.ErrorParagraph>{errors.email}</S.ErrorParagraph>}</S.ErrorMessage>
 
-                        <label htmlFor="nationality">Nationality</label>
-                        <input type="text" onChange={handleChange}
+                        <S.Label htmlFor="nationality">Nationality</S.Label>
+                        <S.Input type="text" onChange={handleChange}
                             valye={values.nationality} placeholder="Nationality"
                             name="nationality" id="nationality" />
-                        {errors.nationality && <span>{errors.nationality}</span>}
-                        <button type="submit">Zarejestruj</button>
-                        <button type="button" onClick={() => register()}>Logowanie</button>
-                    </form>
+                        <S.ErrorMessage>{errors.nationality && <S.ErrorParagraph>{errors.nationality}</S.ErrorParagraph>}</S.ErrorMessage>
+                        <S.ButtonContainer>
+                            <S.Button type="submit">Zarejestruj</S.Button>
+                            <S.Button type="button" onClick={() => props.register()}>Logowanie</S.Button>
+                        </S.ButtonContainer>
+                    </S.FormContainer>
                 )}
             </Formik>
-        </div>
+        </S.Container>
     )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Router } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import { history } from './helpers/History';
@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import styled from 'styled-components';
 import NavigationComponent from './components/NavigationComponent'
+import colors from './utils/colors';
 
 const Container = styled.div`
   height: 100%;
@@ -15,42 +16,35 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: ${colors.honeydew};
 `
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [currentUser, setCurrentUser] = useState()
 
-    this.state = {
-      currentUser: null
-    }
-  }
+  useEffect(() => {
+    authenticationService.currentUser.subscribe(val => setCurrentUser(val))
+  }, [])
 
-  componentDidMount() {
-    authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }))
-  }
-
-  logout() {
-    authenticationService.logout();
+  const logout = () => {
+    authenticationService.logout()
     history.push('/login')
   }
 
-  render() {
-    const { currentUser } = this.state;
-    return (
-      <Router history={history}>
-        <Container>
-          {currentUser &&
-            <NavigationComponent user={currentUser} logout={this.logout} />
-          }
-          <div>
-            <PrivateRoute exact path='/' component={HomePage} />
-            <Route path="/login" component={LoginPage} />
-          </div>
-        </Container>
-      </Router>
-    )
-  }
+  return (
+    <Router history={history}>
+      <Container>
+        {currentUser &&
+          <NavigationComponent user={currentUser} logout={logout} />
+        }
+        <div>
+          <PrivateRoute exact path='/' component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+        </div>
+      </Container>
+    </Router>
+  )
+
 }
 
 export default App;

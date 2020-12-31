@@ -1,19 +1,10 @@
 import React from 'react'
 import { Formik } from 'formik';
-import {
-    Container,
-    FormContainer,
-    ErrorMessage,
-    ErrorParagraph,
-    Label,
-    Input,
-    Button,
-    ButtonContainer,
-} from './style'
+import * as S from '../Styles/style'
 
 const LoginComponent = props => {
     return (
-        <Container>
+        <S.Container>
             <Formik
                 initialValues={{ username: '', password: '' }}
                 onSubmit={(values) => {
@@ -42,24 +33,24 @@ const LoginComponent = props => {
                     handleChange,
                     handleSubmit,
                 }) => (
-                    <FormContainer onSubmit={handleSubmit}>
-                        <Label htmlFor="username">Username</Label>
-                        <Input type="text" onChange={handleChange}
+                    <S.FormContainer onSubmit={handleSubmit}>
+                        <S.Label htmlFor="username">Username</S.Label>
+                        <S.Input type="text" onChange={handleChange}
                             value={values.username} placeholder="Username"
                             name="username" id="username" />
-                        <ErrorMessage>{errors.username && <ErrorParagraph>{errors.username}</ErrorParagraph>}</ErrorMessage>
-                        <Label htmlFor="password">Password</Label>
-                        <Input type="password" name="password"
-                            onChange={handleChange} value={values.password} />
-                        <ErrorMessage> {errors.password && <ErrorParagraph>{errors.password}</ErrorParagraph>}</ErrorMessage>
-                        <ButtonContainer>
-                            <Button type="submit">Zaloguj</Button>
-                            <Button type="button" onClick={() => props.register()}>Rejestracja</Button>
-                        </ButtonContainer>
-                    </FormContainer>
+                        <S.ErrorMessage>{errors.username && <S.ErrorParagraph>{errors.username}</S.ErrorParagraph>}</S.ErrorMessage>
+                        <S.Label htmlFor="password">Password</S.Label>
+                        <S.Input type="password" name="password"
+                            onChange={handleChange} value={values.password} placeholder="Password" />
+                        <S.ErrorMessage>{errors.password && <S.ErrorParagraph>{errors.password}</S.ErrorParagraph>}</S.ErrorMessage>
+                        <S.ButtonContainer>
+                            <S.Button type="submit">Zaloguj</S.Button>
+                            <S.Button type="button" onClick={() => props.register()}>Rejestracja</S.Button>
+                        </S.ButtonContainer>
+                    </S.FormContainer>
                 )}
             </Formik>
-        </Container>
+        </S.Container>
     )
 }
 

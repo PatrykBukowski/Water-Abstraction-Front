@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import colors from '../../utils/colors';
 
 const Navigation = styled.div`
-    background: #20A4F3;
+    background: ${colors.celadonBlue};
     height: 50px;
     display: flex;
     justify-content: space-around;
@@ -10,7 +11,7 @@ const Navigation = styled.div`
     align-items: center;
     width: 100%;
     font-size: 1.5em;
-    color: #F6F7F8;
+    color: ${colors.white};
 `
 
 const NavigationComponent = ({ user, logout }) => {

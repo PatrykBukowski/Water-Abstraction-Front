@@ -1,38 +1,23 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { userService } from '../../services/UserService'
 import { authenticationService } from '../../services/AuthenticationService'
-import AddSubtraction from '../../components/AddSubtarction'
-import SubtractionSummary from '../../components/SubtractionSummary'
-import SubtractionList from '../../components/SubtractionList'
+import MainComponent from '../../components/MainComponent';
 
-class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
+const HomePage = () => {
+    const [user, setUser] = useState()
 
-        this.state = {
-            currentUser: authenticationService.currentUserValue,
-            user: null,
-        };
-    }
+    useEffect(() => {
+        userService.getUser(authenticationService.currentUserValue.username).then(result => setUser(result))
+    }, [])
 
-    componentDidMount() { userService.getUser(this.state.currentUser.username).then(user => this.setState({ user })); }
+    const reload = () => userService.getUser(user.login).then(result => setUser({ result }));
 
-    render() {
-        const { currentUser, user } = this.state;
-
-        const reload = () => userService.getUser(this.state.user.login).then(user => this.setState({ user }));
-
-        return (
-            <div>
-                {user &&
-                <div>
-                    <SubtractionSummary user={user} />
-                    <AddSubtraction user={user} reload={reload} />
-                    <SubtractionList list={user.subtractions}/>
-                </div>
-                }
-            </div>
-        );
-    }
+    return (
+        <>
+            {user &&
+                <MainComponent user={user} reload={reload} />
+            }
+            </>
+    );
 }
 export default HomePage;

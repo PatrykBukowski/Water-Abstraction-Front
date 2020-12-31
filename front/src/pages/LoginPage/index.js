@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import LoginComponent from '../../components/LoginComponent';
-import RegisterComponent from '../../components/RegisterComponent';
+import LoginComponent from '../../components/HomeComponents/LoginComponent';
+import RegisterComponent from '../../components/HomeComponents/RegisterComponent';
 import { authenticationService } from '../../services/AuthenticationService';
 
 const LoginPage = ({ history, location: { state } }) => {
@@ -17,7 +17,7 @@ const LoginPage = ({ history, location: { state } }) => {
                 register={changeRegister} 
                 from={state} 
                 history={history} />
-                : <RegisterComponent register={changeRegister} />
+                : <RegisterComponent createUser={authenticationService.register} register={changeRegister} />
             }
         </div>
     )
