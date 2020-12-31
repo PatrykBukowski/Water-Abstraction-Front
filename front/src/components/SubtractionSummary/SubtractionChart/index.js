@@ -1,30 +1,28 @@
 import React from 'react'
-import { PieChart } from 'react-minimal-pie-chart'
+import { Doughnut } from 'react-chartjs-2'
+import colors from '../../../utils/colors'
 
 const SubtractionChart = ({ averageUserSubtraction, eurostatSubtraction }) => {
-
-    const pieRotation = () => (
-        (180 * (eurostatSubtraction / (eurostatSubtraction + averageUserSubtraction)))+360
-    )
+    const data = {
+        datasets: [
+            {
+                backgroundColor: [
+                    colors.imperialRed,
+                    colors.powderBlue,
+                ],
+                data: [averageUserSubtraction, eurostatSubtraction]
+            }
+        ]
+    }
 
     return (
-        <div style={{ width: "300px" }}>
-            <PieChart
-                data={[
-                    {
-                        color: "#0000FF",
-                        title: "User",
-                        value: averageUserSubtraction,
-                    },
-                    {
-                        color: "#FF0000",
-                        title: "Eurostat",
-                        value: eurostatSubtraction,
-                    },
-                ]}
-                lineWidth={50}
-                paddingAngle={1}
-                startAngle={pieRotation()}
+        <div>
+            <Doughnut
+                data={data}
+                options={{
+                    rotation: 1 * Math.PI,
+                    circumference: 1 * Math.PI,
+                }}
             />
         </div>
     )

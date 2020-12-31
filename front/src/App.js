@@ -37,10 +37,8 @@ const App = () => {
         {currentUser &&
           <NavigationComponent user={currentUser} logout={logout} />
         }
-        <div>
           <PrivateRoute exact path='/' component={HomePage} />
           <Route path="/login" component={LoginPage} />
-        </div>
       </Container>
     </Router>
   )

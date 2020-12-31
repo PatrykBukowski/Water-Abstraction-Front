@@ -7,4 +7,5 @@ export default {
     prussianBlue: "#1D3557",
     white: "#FFFFFF",
     red: "#FF0000",
+    black: "#000000",
 }

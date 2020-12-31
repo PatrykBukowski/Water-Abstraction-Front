@@ -10,14 +10,14 @@ const HomePage = () => {
         userService.getUser(authenticationService.currentUserValue.username).then(result => setUser(result))
     }, [])
 
-    const reload = () => userService.getUser(user.login).then(result => setUser({ result }));
+    const reload = () => userService.getUser(authenticationService.currentUserValue.username).then(result => setUser(result));
 
     return (
         <>
             {user &&
                 <MainComponent user={user} reload={reload} />
             }
-            </>
+        </>
     );
 }
 export default HomePage;
