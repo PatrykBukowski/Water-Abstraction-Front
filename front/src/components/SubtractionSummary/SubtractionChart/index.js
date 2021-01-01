@@ -7,8 +7,8 @@ const SubtractionChart = ({ averageUserSubtraction, eurostatSubtraction }) => {
         datasets: [
             {
                 backgroundColor: [
-                    colors.imperialRed,
-                    colors.powderBlue,
+                    colors.orangeWeb,
+                    colors.oxfordBlue,
                 ],
                 data: [averageUserSubtraction, eurostatSubtraction]
             }
@@ -16,15 +16,23 @@ const SubtractionChart = ({ averageUserSubtraction, eurostatSubtraction }) => {
     }
 
     return (
-        <div>
-            <Doughnut
-                data={data}
-                options={{
-                    rotation: 1 * Math.PI,
-                    circumference: 1 * Math.PI,
-                }}
-            />
-        </div>
+        <Doughnut
+            data={data}
+            options={{
+                rotation: 1 * Math.PI,
+                circumference: 1 * Math.PI,
+                responsive: true,
+                cutoutPercentage: 80,
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                },
+                tooltips: {
+                    enabled: false,
+                },
+            }}
+        />
     )
 }
 

@@ -13,7 +13,7 @@
         "**/README.md": true,
         "**/yarn.lock": true,
         "**/.vscode": true,
-        "src/index.js": false
+        "src/index.js": true
     },
     "explorerExclude.backup": null
 }

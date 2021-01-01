@@ -60,3 +60,6 @@ export const Button = styled.button`
         background: ${colors.imperialRed};
     }
 `
+export const StyledWrapper = styled.div`
+    width: 100%;
+`

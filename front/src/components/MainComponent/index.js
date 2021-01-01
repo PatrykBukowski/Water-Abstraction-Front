@@ -3,23 +3,27 @@ import AddSubtraction from '../AddSubtarction'
 import SubtractionSummary from '../SubtractionSummary'
 import SubtractionList from '../SubtractionList'
 import styled from 'styled-components';
+import NavigationComponent from '../NavigationComponent';
+import colors from '../../utils/colors'
 
 const S = {}
-S.Wrapper = styled.div`
+S.Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background: ${colors.platinum};
 `
 
 const MainComponent = props => {
     return (
-        <S.Wrapper>
+        <S.Container>
+            <NavigationComponent user={props.user} />
             <SubtractionSummary user={props.user} />
             <AddSubtraction user={props.user} reload={props.reload} />
             <SubtractionList list={props.user.subtractions} />
-        </S.Wrapper>
+        </S.Container>
     )
 }
 
