@@ -10,7 +10,7 @@ const LoginPage = ({ history, location: { state } }) => {
     if (authenticationService.currentUserValue) history.push('/')
 
     return (
-        <div>
+        <>
             {!register
                 ? <LoginComponent 
                 login={authenticationService.login} 
@@ -19,7 +19,7 @@ const LoginPage = ({ history, location: { state } }) => {
                 history={history} />
                 : <RegisterComponent createUser={authenticationService.register} register={changeRegister} />
             }
-        </div>
+        </>
     )
 }
 

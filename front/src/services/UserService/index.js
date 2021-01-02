@@ -27,8 +27,18 @@ const getEurostat = nationality => {
     return fetch(`${api.eurostat}current?nationality=${nationality}`, requestOptions).then(handleResponse);
 }
 
+const deleteSubtraction = (taskId, login) => {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(),
+        body: JSON.stringify({ taskId, login })
+    }
+    return fetch(api.subtraction, requestOptions).then(handleResponse)
+}
+
 export const userService = {
     postSubstraction,
     getUser,
-    getEurostat
+    getEurostat,
+    deleteSubtraction,
 };

@@ -22,7 +22,7 @@ const MainComponent = props => {
             <NavigationComponent user={props.user} />
             <SubtractionSummary user={props.user} />
             <AddSubtraction user={props.user} reload={props.reload} />
-            <WaterConsumptionList list={props.user.subtractions} />
+            <WaterConsumptionList list={props.user} reload={props.reload} />
         </S.Container>
     )
 }
