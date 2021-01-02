@@ -1,24 +1,23 @@
 import React from 'react'
 import { userService } from '../../services/UserService'
 import { Formik } from 'formik'
-import * as S from './styles'
 import styled from 'styled-components'
 import colors from '../../utils/colors'
 
-const M = {}
-M.MainWrapper = styled.div`
+const S = {}
+S.MainWrapper = styled.div`
     width: 100%;
     background: ${colors.oxfordBlue};
     height: 100px;
 `
-M.Form = styled.form`
+S.Form = styled.form`
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 `
-M.Button = styled.button`
+S.Button = styled.button`
     height: 50px;
     width: 100px;
     margin: 0 10px;
@@ -35,11 +34,11 @@ M.Button = styled.button`
         background: ${colors.orangeWeb};
     }
 `
-M.Input = styled.input`
+S.Input = styled.input`
     height: 50px;
     width: 320px;
     margin: 0 10px;
-    background: ${colors.platinum};
+    background: ${(props) => props.error[props.name] ? colors.red : colors.platinum};
     border: none;
     transition: .2s background;
     font-size: 20px;
@@ -52,7 +51,7 @@ M.Input = styled.input`
 
 const AddSubtraction = ({ user: { login }, reload }) => {
     return (
-        <M.MainWrapper>
+        <S.MainWrapper>
             <Formik
                 validateOnChange={false}
                 initialValues={{ taskName: '', value: '' }}
@@ -67,6 +66,7 @@ const AddSubtraction = ({ user: { login }, reload }) => {
                 validate={values => {
                     const errors = {}
                     if (!values.taskName) {
+                        console.log(values)
                         errors.taskName = true
                     }
                     if (!values.taskValue) {
@@ -77,36 +77,17 @@ const AddSubtraction = ({ user: { login }, reload }) => {
                     return errors;
                 }}>
                 {({ values, errors, handleChange, handleSubmit, handleReset }) => (
-                    <M.Form onSubmit={handleSubmit}>
-                        <M.Button type="reset" onClick={handleReset}>RESET</M.Button>
-                        <M.Input type="text" onChange={handleChange}
-                            value={values.taskName} placeholder="Name" name="taskName" />
-                        <M.Input type="text" onChange={handleChange}
-                            value={values.value} placeholder="Value" name="value" />
-                        <M.Button type="submit">ADD</M.Button>
-                        {/* <S.InputWrapper>
+                    <S.Form onSubmit={handleSubmit}>
+                        <S.Button type="reset" onClick={handleReset}>RESET</S.Button>
                         <S.Input type="text" onChange={handleChange}
-                            value={values.taskName} placeholder="Task"
-                            name="taskName" id="taskName" />
-                        <S.Error>
-                            {errors.taskName && <span>{errors.taskName}</span>}
-                        </S.Error>
-                    </S.InputWrapper>
-                    <S.InputWrapper>
+                            value={values.taskName} placeholder="Name" name="taskName" error={errors} />
                         <S.Input type="text" onChange={handleChange}
-                            value={values.taskValue} placeholder="value"
-                            name="taskValue" id="taskValue" />
-                        <S.Error>
-                            {errors.taskValue && <span>{errors.taskValue}</span>}
-                        </S.Error>
-                    </S.InputWrapper>
-                    <S.ButtonWrapper>
-                        <S.Button type="submit">Add</S.Button>
-                    </S.ButtonWrapper> */}
-                    </M.Form>
+                            value={values.taskValue} placeholder="Value" name="taskValue" error={errors} />
+                        <S.Button type="submit">ADD</S.Button>
+                    </S.Form>
                 )}
             </Formik>
-        </M.MainWrapper>
+        </S.MainWrapper>
     )
 }
 
