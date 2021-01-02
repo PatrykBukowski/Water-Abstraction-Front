@@ -1,11 +1,61 @@
 import React from 'react'
-import { authenticationService } from '../../../services/AuthenticationService'
 import { Formik } from 'formik';
-import * as S from '../Styles/style';
+import styled from 'styled-components';
+import colors from '../../../utils/colors';
+
+const M = {}
+M.MainWrapper = styled.div`
+    background: ${colors.platinum};
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+M.FormWrapper = styled.div`
+    height: 600px;
+    width: 1000px;
+    background: ${colors.oxfordBlue};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+M.FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+M.Input = styled.input`
+    width: 320px;
+    height: 50px;
+    margin: 15px;
+    font-size: 32px;
+    border: none;
+    transition: .2s background;
+    background: ${(props) => props.error[props.name] ? colors.red : colors.platinum};
+    :focus{
+        outline: none;
+        background: ${colors.orangeWeb};
+    }
+`
+M.LoginButton = styled.button`
+    width: 320px;
+    height: 50px;
+    margin: 15px;
+    border: none;
+    background: ${colors.white};
+    font-size: 32px;
+    font-weight: bold;
+`
+M.RegisterButton = styled.p`
+    margin: 15px;
+    font-size: 20px;
+    color: ${colors.platinum};
+`
 
 const RegisterComponent = props => {
     return (
-        <S.Container>
+        <M.MainWrapper>
             <Formik
                 initialValues={{
                     username: '',
@@ -16,10 +66,7 @@ const RegisterComponent = props => {
                 onSubmit={(values) => {
                     const { username, password, email, nationality } = values
                     props.createUser(username, password, email, nationality)
-                        .then(
-                            response => { props.register() },
-                            error => console.log(error)
-                        )
+                        .then(() => { props.register() })
                 }}
                 validate={values => {
                     const errors = {};
@@ -51,38 +98,30 @@ const RegisterComponent = props => {
                     handleChange,
                     handleSubmit,
                 }) => (
-                    <S.FormContainer minHeight="650px" onSubmit={handleSubmit}>
-                        <S.Label htmlFor="username">Username</S.Label>
-                        <S.Input type='text' onChange={handleChange}
-                            value={values.username} placeholder="Username"
-                            name="username" id="username" />
-                        <S.ErrorMessage>{errors.username && <S.ErrorParagraph>{errors.username}</S.ErrorParagraph>}</S.ErrorMessage>
+                    <M.FormWrapper>
+                        <M.FormContainer onSubmit={handleSubmit}>
+                            <M.Input type='text' onChange={handleChange}
+                                value={values.username} placeholder="Username"
+                                name="username" id="username" error={errors} />
 
-                        <S.Label htmlFor="password">Password</S.Label>
-                        <S.Input type="password" onChange={handleChange}
-                            value={values.password} placeholder="Password"
-                            name="password" id="password" />
-                        <S.ErrorMessage>{errors.password && <S.ErrorParagraph>{errors.password}</S.ErrorParagraph>}</S.ErrorMessage>
+                            <M.Input type="password" onChange={handleChange}
+                                value={values.password} placeholder="Password"
+                                name="password" id="password" error={errors} />
 
-                        <S.Label htmlFor="email">Email</S.Label>
-                        <S.Input type="email" onChange={handleChange}
-                            value={values.email} placeholder="Email"
-                            name="email" id="email" />
-                        <S.ErrorMessage>{errors.email && <S.ErrorParagraph>{errors.email}</S.ErrorParagraph>}</S.ErrorMessage>
+                            <M.Input type="email" onChange={handleChange}
+                                value={values.email} placeholder="Email"
+                                name="email" id="email" error={errors} />
 
-                        <S.Label htmlFor="nationality">Nationality</S.Label>
-                        <S.Input type="text" onChange={handleChange}
-                            valye={values.nationality} placeholder="Nationality"
-                            name="nationality" id="nationality" />
-                        <S.ErrorMessage>{errors.nationality && <S.ErrorParagraph>{errors.nationality}</S.ErrorParagraph>}</S.ErrorMessage>
-                        <S.ButtonContainer>
-                            <S.Button type="submit">Zarejestruj</S.Button>
-                            <S.Button type="button" onClick={() => props.register()}>Logowanie</S.Button>
-                        </S.ButtonContainer>
-                    </S.FormContainer>
+                            <M.Input type="text" onChange={handleChange}
+                                valye={values.nationality} placeholder="Nationality"
+                                name="nationality" id="nationality" error={errors} />
+                            <M.LoginButton type="submit">REGISTER</M.LoginButton>
+                            <M.RegisterButton type="button" onClick={() => props.register()}>LOGIN</M.RegisterButton>
+                        </M.FormContainer>
+                    </M.FormWrapper>
                 )}
             </Formik>
-        </S.Container>
+        </M.MainWrapper>
     )
 }
 
