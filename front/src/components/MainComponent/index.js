@@ -1,7 +1,7 @@
 import React from 'react'
 import AddSubtraction from '../AddSubtarction'
 import SubtractionSummary from '../SubtractionSummary'
-import SubtractionList from '../SubtractionList'
+import WaterConsumptionList from '../WaterConsumptionList'
 import styled from 'styled-components';
 import NavigationComponent from '../NavigationComponent';
 import colors from '../../utils/colors'
@@ -22,7 +22,7 @@ const MainComponent = props => {
             <NavigationComponent user={props.user} />
             <SubtractionSummary user={props.user} />
             <AddSubtraction user={props.user} reload={props.reload} />
-            <SubtractionList list={props.user.subtractions} />
+            <WaterConsumptionList list={props.user.subtractions} />
         </S.Container>
     )
 }
