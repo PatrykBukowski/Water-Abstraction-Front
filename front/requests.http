@@ -8,4 +8,14 @@ content-type: application/json
 ###
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luMSIsImlkIjoiYjc3Y2U2MGQtYTU5Ny00NjUxLTg5M2QtNjc5MmExNjZjZDJhIiwiaWF0IjoxNjA5MjY5MTY0LCJleHAiOjE2MDkyNjk0NjR9.O6IQv6Epa2-i-WBYB3EDXWrUa4o0YiYPqZClU6ODreo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luMSIsImlkIjoiYjc3Y2U2MGQtYTU5Ny00NjUxLTg5M2QtNjc5MmExNjZjZDJhIiwiaWF0IjoxNjA5NjA2NjEyLCJleHAiOjE2MDk2MDY5MTJ9.NtjIZSdtj4PSp2ahgwlxmxMAYTX_kZRmGqXV054hDEE
+
+###
+DELETE http://localhost:3000/subtractions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luMSIsImlkIjoiYjc3Y2U2MGQtYTU5Ny00NjUxLTg5M2QtNjc5MmExNjZjZDJhIiwiaWF0IjoxNjA5NjA2NjEyLCJleHAiOjE2MDk2MDY5MTJ9.NtjIZSdtj4PSp2ahgwlxmxMAYTX_kZRmGqXV054hDEE
+content-type: application/json
+
+{
+    "taskId": "81b60b46-0e28-4e9d-97a5-b49a7c865684",
+    "login": "login1"
+}
