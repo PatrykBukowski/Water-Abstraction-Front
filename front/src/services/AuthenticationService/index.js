@@ -1,5 +1,6 @@
 import { BehaviorSubject } from 'rxjs'
 import { handleResponse } from '../../helpers/HandleResponse'
+import api from '../../utils/api';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')))
 
@@ -8,7 +9,7 @@ export const authenticationService = {
     logout,
     register,
     currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
+    get currentUserValue() { return currentUserSubject.value }
 };
 
 function login(login, password) {
@@ -18,7 +19,7 @@ function login(login, password) {
         body: JSON.stringify({ login, password })
     };
 
-    return fetch(`http://localhost:3000/auth`, requestOptions)
+    return fetch(api.auth, requestOptions)
         .then(handleResponse)
         .then(user => {
             localStorage.setItem('currentUser', JSON.stringify(user));
@@ -28,15 +29,15 @@ function login(login, password) {
         });
 }
 
-function register(login, password, email, nationality){
+function register(login, password, email, nationality) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ login, password, email, nationality })
     }
 
-    return fetch(`http://localhost:3000/users`, requestOptions)
-    .then(handleResponse)
+    return fetch(api.users, requestOptions)
+        .then(handleResponse)
 }
 
 function logout() {
