@@ -54,7 +54,7 @@ const AddSubtraction = ({ user: { login }, reload }) => {
         <S.MainWrapper>
             <Formik
                 validateOnChange={false}
-                initialValues={{ taskName: '', value: '' }}
+                initialValues={{ taskName: '', taskValue: '' }}
                 onSubmit={(values) => {
                     userService.postSubstraction(login, values.taskName, parseFloat(values.taskValue))
                         .then(e => {

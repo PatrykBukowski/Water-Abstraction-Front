@@ -1,6 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 import colors from '../../utils/colors'
+import { userService } from '../../services/UserService'
 
 const S = {}
 S.MainWrapper = styled.div`
@@ -37,7 +37,10 @@ S.DataButton = styled(S.MainData)`
     border-right: none;
 `
 
-const WaterConsumptionList = ({ list: subtractionList }) => {
+const WaterConsumptionList = props => {
+    const { list: { login, subtractions: subtractionList } } = props
+    const deleteItem = (taskId) => userService.deleteSubtraction(taskId, login).then(() => props.reload())
+
     return (
         <S.MainWrapper>
             <S.Ul>
@@ -53,7 +56,9 @@ const WaterConsumptionList = ({ list: subtractionList }) => {
                     <S.DataValue>{element.taskName}</S.DataValue>
                     <S.DataValue>{element.value}</S.DataValue>
                     <S.DataValue>{element.createdAt}</S.DataValue>
-                    <S.DataButton>Delete</S.DataButton>
+                    <S.DataButton onClick={() => {
+                        deleteItem(element.id)
+                    }}>Delete</S.DataButton>
                 </S.ListElement>)}
             </S.Ul>
         </S.MainWrapper>
