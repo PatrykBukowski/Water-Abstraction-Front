@@ -11,9 +11,7 @@ S.MainWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
-    /* font-size: 1.5em; */
     color: ${colors.white};
 `
 S.NavigationWrapper = styled.div`
@@ -26,6 +24,9 @@ S.NavigationWrapper = styled.div`
 S.Heading = styled.h1`
     color: ${colors.orangeWeb};
     margin: 0;
+    @media only screen and (max-width: 1024px){
+        display: none;
+    }
 `
 S.Button = styled.p`
     transition: .5s color;

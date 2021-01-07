@@ -10,6 +10,7 @@ S.MainWrapper = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+    flex-wrap: wrap;
 `
 S.Information = styled.div`
     flex-basis: 785px;
@@ -17,6 +18,12 @@ S.Information = styled.div`
     justify-content:center;
     align-items: center;
     flex-direction: column;
+    font-size: 64px;
+    @media only screen and (max-width: 768px){
+        order: 2;
+        flex-basis: 40%;
+        font-size: 32px;
+    }
 `
 S.ChartWrapper = styled.div`
     flex-basis: 680px;
@@ -25,6 +32,10 @@ S.ChartWrapper = styled.div`
     justify-content: flex-end;
     align-items: center;
     position: relative;
+    @media only screen and (max-width: 768px){
+        order: 1;
+        flex-basis: 50%;
+    }
 `
 S.Heading = styled.h2`
     font-size: 100px;
@@ -32,11 +43,10 @@ S.Heading = styled.h2`
     margin: 20px 0;
 `
 S.Label = styled.p`
-    font-size: 64px;
     margin: 0;
 `
 S.Value = styled.p`
-    font-size: 128px;
+    font-size: 2em;
     font-weight: bold;
     margin: 10px 0;
     color: ${(props) => props.isMoreThanEurostat ? colors.orangeWeb : colors.black};

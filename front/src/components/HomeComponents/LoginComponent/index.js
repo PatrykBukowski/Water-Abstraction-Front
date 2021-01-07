@@ -17,6 +17,10 @@ S.FormWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: 1000px){
+        height: 100%;
+        width: 100%;
+    }
 `
 S.FormContainer = styled.form`
     display: flex;
@@ -36,6 +40,9 @@ S.Input = styled.input`
         outline: none;
         background: ${colors.orangeWeb};
     }
+    @media only screen and (max-width: 340px){
+        width: calc(100% - 10px);
+    }
 `
 S.LoginButton = styled.button`
     width: 320px;
@@ -45,6 +52,9 @@ S.LoginButton = styled.button`
     background: ${colors.white};
     font-size: 32px;
     font-weight: bold;
+    @media only screen and (max-width: 340px){
+        width: calc(100% - 10px);
+    }
 `
 S.RegisterButton = styled.p`
     margin: 15px;

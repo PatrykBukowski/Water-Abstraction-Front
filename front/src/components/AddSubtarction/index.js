@@ -33,6 +33,9 @@ S.Button = styled.button`
     :hover{
         background: ${colors.orangeWeb};
     }
+    @media only screen and (max-width: 768px){
+        flex-basis: calc(100% / 6 * 1);
+    }
 `
 S.Input = styled.input`
     height: 50px;
@@ -46,6 +49,9 @@ S.Input = styled.input`
     :focus{
         outline: none;
         background: ${colors.orangeWeb};
+    }
+    @media only screen and (max-width: 768px){
+        flex-basis: calc(100% / 6 * 2);
     }
 `
 

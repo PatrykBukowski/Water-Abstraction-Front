@@ -18,6 +18,10 @@ M.FormWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: 1000px){
+        height: 100%;
+        width: 100%;
+    }
 `
 M.FormContainer = styled.form`
     display: flex;
@@ -37,6 +41,9 @@ M.Input = styled.input`
         outline: none;
         background: ${colors.orangeWeb};
     }
+    @media only screen and (max-width: 340px){
+        width: calc(100% - 10px);
+    }
 `
 M.LoginButton = styled.button`
     width: 320px;
@@ -46,6 +53,9 @@ M.LoginButton = styled.button`
     background: ${colors.white};
     font-size: 32px;
     font-weight: bold;
+    @media only screen and (max-width: 340px){
+        width: calc(100% - 10px);
+    }
 `
 M.RegisterButton = styled.p`
     margin: 15px;
