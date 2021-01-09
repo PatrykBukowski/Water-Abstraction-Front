@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { userService } from "services/UserService";
 import SubtractionChart from "./SubtractionChart";
 import styled from "styled-components";
-import colors from "utils/colors";
 import InformationComponent from "components/SubtractionSummary/InformationComponent";
 
 const S = {};
 S.MainWrapper = styled.div`
-  flex-basis: 500px;
+  flex-basis: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
-  flex-wrap: wrap;
+  @media only screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 `;
 S.ChartWrapper = styled.div`
   flex-basis: 680px;

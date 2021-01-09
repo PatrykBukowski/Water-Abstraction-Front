@@ -5,21 +5,25 @@ import Styled from "styled-components";
 
 const S = {};
 S.StyledWrapper = Styled.div`
-    flex-basis: 680px;
+    flex-basis: calc(100% / 12 * 4);
+    min-width: 0
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     position: relative;
-    /*     @media only screen and (max-width: 768px){
+    overflow: auto;
+    @media only screen and (max-width: 1024px){
         order: 1;
-        flex-basis: 50%;
-    } */
+        flex-basis: 60%;
+        font-size: .5em;
+    }
 `;
 S.Heading = Styled.h2`
-    font-size: 100px;
+    font-size: 4em;
     font-weight: bold;
     margin: 20px 0;
+    text-align: center;
 `;
 
 const SubtractionChart = ({ averageUserSubtraction, eurostatSubtraction }) => {

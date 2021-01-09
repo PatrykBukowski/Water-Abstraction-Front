@@ -3,17 +3,17 @@ import Styled from "styled-components";
 import Colors from "utils/colors";
 const S = {};
 S.StyledWrapper = Styled.div`
-    flex-basis: 785px;
+    flex-basis: calc(100% / 12 * 4);
     display: flex;
     justify-content:center;
     align-items: center;
     flex-direction: column;
-    font-size: 64px;
-/*     @media only screen and (max-width: 768px){
+    font-size: 3em;
+    @media only screen and (max-width: 1024px){
         order: 2;
-        flex-basis: 40%;
-        font-size: 32px;
-    } */
+        flex-basis: 50%;
+        font-size: 1.5em;
+    }
 `;
 S.Label = Styled.p`
     margin: 0;
