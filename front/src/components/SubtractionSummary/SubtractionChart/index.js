@@ -5,7 +5,7 @@ import Styled from "styled-components";
 
 const S = {};
 S.StyledWrapper = Styled.div`
-    flex-basis: calc(100% / 12 * 4);
+    flex-basis: calc(100% / 12 * 6);
     min-width: 0
     display: flex;
     flex-direction: column;
@@ -16,7 +16,9 @@ S.StyledWrapper = Styled.div`
     @media only screen and (max-width: 1024px){
         order: 1;
         flex-basis: 60%;
-        font-size: .5em;
+    }
+    @media only screen and (max-width: 425px){
+        font-size: .8em;
     }
 `;
 S.Heading = Styled.h2`

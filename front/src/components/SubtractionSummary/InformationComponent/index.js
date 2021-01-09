@@ -3,12 +3,12 @@ import Styled from "styled-components";
 import Colors from "utils/colors";
 const S = {};
 S.StyledWrapper = Styled.div`
-    flex-basis: calc(100% / 12 * 4);
+    flex-basis: calc(100% / 12 * 3);
     display: flex;
     justify-content:center;
     align-items: center;
     flex-direction: column;
-    font-size: 3em;
+    font-size: 2.5em;
     @media only screen and (max-width: 1024px){
         order: 2;
         flex-basis: 50%;
