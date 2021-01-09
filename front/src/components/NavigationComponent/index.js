@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../utils/colors';
-import { history } from '../../helpers/History';
-import { authenticationService } from '../../services/AuthenticationService';
+import colors from 'utils/colors';
+import { history } from 'helpers/History';
+import { authenticationService } from 'services/AuthenticationService';
 
 const S = {}
 S.MainWrapper = styled.div`
     background: ${colors.oxfordBlue};
-    /* flex-basis: 100px; */
     display: flex;
     justify-content: center;
     align-items: center;
