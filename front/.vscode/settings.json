@@ -1,5 +1,21 @@
 {
     "files.exclude": {
+        "**/.git": false,
+        "**/.svn": false,
+        "**/.hg": false,
+        "**/CVS": false,
+        "**/.DS_Store": false,
+        "**/public": false,
+        "**/node_modules": false,
+        "**/.eslintcache": false,
+        "**/.gitignore": false,
+        "**/package.json": false,
+        "**/README.md": false,
+        "**/yarn.lock": false,
+        "**/.vscode": false,
+        "src/index.js": false
+    },
+    "explorerExclude.backup": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
@@ -14,6 +30,5 @@
         "**/yarn.lock": true,
         "**/.vscode": true,
         "src/index.js": true
-    },
-    "explorerExclude.backup": null
+    }
 }
