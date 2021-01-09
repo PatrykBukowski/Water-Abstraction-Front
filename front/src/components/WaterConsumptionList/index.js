@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "utils/colors";
 import { userService } from "services/UserService";
-import Moment from 'moment';
+import Moment from "moment";
 
 const S = {};
 S.MainWrapper = styled.div`
@@ -19,9 +19,12 @@ S.ListElement = styled.li`
   :nth-child(2n + 1) {
     background: ${colors.lightGray};
   }
+  @media only screen and (max-width: 1024px) {
+    font-size: ${({ header }) => (header ? "1em" : ".6em")};
+  }
 `;
 S.MainData = styled.div`
-  height: 50px;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +39,9 @@ S.DataValue = styled(S.MainData)`
 S.DataButton = styled(S.MainData)`
   flex-basis: calc(100% / 120 * 12);
   border-right: none;
+`;
+S.P = styled.p`
+  text-align: center;
 `;
 
 const WaterConsumptionList = (props) => {
@@ -58,9 +64,13 @@ const WaterConsumptionList = (props) => {
         {subtractionList.map((element, index) => (
           <S.ListElement key={element.id}>
             <S.DataIndex>{index + 1}</S.DataIndex>
-            <S.DataValue>{element.taskName}</S.DataValue>
+            <S.DataValue>
+              <S.P>{element.taskName}</S.P>
+            </S.DataValue>
             <S.DataValue>{element.value}</S.DataValue>
-            <S.DataValue>{Moment(element.createdAt).format('D MM YYYY')}</S.DataValue>
+            <S.DataValue>
+              {Moment(element.createdAt).format("D MM YYYY")}
+            </S.DataValue>
             <S.DataButton
               onClick={() => {
                 deleteItem(element.id);
