@@ -4,7 +4,6 @@ import colors from '../../../utils/colors'
 
 const S = {}
 S.MainWrapper = styled.div`
-    background: ${colors.platinum};
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,6 +13,7 @@ S.FormWrapper = styled.div`
     height: 600px;
     width: 1000px;
     background: ${colors.oxfordBlue};
+    opacity: .9;
     display: flex;
     justify-content: center;
     align-items: center;

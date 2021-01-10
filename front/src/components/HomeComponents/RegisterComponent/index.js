@@ -5,11 +5,11 @@ import colors from '../../../utils/colors';
 
 const M = {}
 M.MainWrapper = styled.div`
-    background: ${colors.platinum};
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: .9;
 `
 M.FormWrapper = styled.div`
     height: 600px;
