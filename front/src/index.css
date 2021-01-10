@@ -12,9 +12,9 @@ body {
 #video {
   position: fixed;
   z-index: -1;
-  width: 100%;
+  width: 110%;
   top: 0;
-  left: 0;
+  left: -10%;
 }
 html > div[style] {
   display: none !important;
