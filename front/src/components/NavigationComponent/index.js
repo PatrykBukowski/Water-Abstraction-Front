@@ -1,19 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../utils/colors';
-import { history } from '../../helpers/History';
-import { authenticationService } from '../../services/AuthenticationService';
+import colors from 'utils/colors';
+import { history } from 'helpers/History';
+import { authenticationService } from 'services/AuthenticationService';
 
 const S = {}
 S.MainWrapper = styled.div`
     background: ${colors.oxfordBlue};
-    flex-basis: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
-    /* font-size: 1.5em; */
     color: ${colors.white};
 `
 S.NavigationWrapper = styled.div`
@@ -26,15 +23,21 @@ S.NavigationWrapper = styled.div`
 S.Heading = styled.h1`
     color: ${colors.orangeWeb};
     margin: 0;
+    @media only screen and (max-width: 1024px){
+        display: none;
+    }
 `
 S.Button = styled.p`
     transition: .5s color;
     font-size: 46px;
     font-weight: bold;
-    margin: 0;
+    margin: 20px 0;;
     :hover{
         color: ${colors.orangeWeb};
         cursor: pointer;
+    }
+    @media only screen and (max-width: 1024px){
+        font-size: 1.5em;
     }
 `
 
